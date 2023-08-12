@@ -15,7 +15,6 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { CommonModule } from "@angular/common";
-import { WelcomeModule} from "./pages/welcome/welcome.module";
 
 registerLocaleData(en);
 
@@ -33,8 +32,7 @@ registerLocaleData(en);
     NzLayoutModule,
     NzMenuModule,
     NzButtonModule,
-    CommonModule,
-    WelcomeModule
+    CommonModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }
