@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MqttModuleServiceService } from 'src/app/services/mqtt-module-service.service';
+import { MqttModuleServiceService } from '../../services/mqttModule/mqtt-module-service.service';
 
 @Component({
   selector: 'app-welcome',
@@ -18,20 +18,13 @@ export class WelcomeComponent implements OnInit {
     this.initializeMQTTData();
   }
 
-  initializeMQTTData() {
-    this.mqttModule.getClient().onConnectionLost = this.mqttModule.onConnectionLost.bind(this);
-    this.mqttModule.getClient().connect({
-      onSuccess: this.onConnect.bind(this),
-      useSSL: true,
-      userName: 'admin',
-      password: 'Thanhnhu213',
-      // ports: '8883'
-    });
-  }
-
-  onConnect() {
-    console.log('Connected');
-    this.subscribeToMqttMessages();
+  async initializeMQTTData() {
+    try{
+      await this.mqttModule.waitUntilConnected();
+      this.subscribeToMqttMessages();
+    } catch (error){
+      console.log("error", error);
+    }
   }
 
   subscribeToMqttMessages() {

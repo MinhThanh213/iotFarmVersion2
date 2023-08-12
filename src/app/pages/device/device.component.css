@@ -1,0 +1,71 @@
+.dashboard {
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+    grid-template-rows: 7fr 6fr;
+    gap: 5px;
+    /* height: 100%; */
+    /* padding: 5px; */
+}
+
+.square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: white;
+    border-radius: 8px;
+}
+
+/* .square1 {
+    background-color: #ffc107;
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 1;
+} */
+
+.square2 {
+    background-color: #4caf50;
+    grid-column: 1 / span 2;
+    grid-row: 2 / span 1;
+}
+
+/* .square3 {
+    background-color: #2196f3;
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 2;
+} */
+
+.square4 {
+    background-color: #e91e63;
+    grid-column: 1 / span 1;
+    grid-row: 3 / span 1;
+}
+
+.square5 {
+    background-color: #9c27b0;
+    grid-column: 2 / span 1;
+    grid-row: 3 / span 1;
+}
+
+.square6 {
+    background-color: #ff5722;
+    grid-column: 1 / span 2;
+    grid-row: 4 / span 1;
+}
+
+.square7 {
+    background-color: #607d8b;
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+}
+
+.square8 {
+    background-color: #795548;
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+}
+
+/* .square9 {
+    background-color: #3f51b5;
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 1;
+} */

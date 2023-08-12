@@ -8,28 +8,47 @@ import { BehaviorSubject } from 'rxjs';
 export class MqttModuleServiceService {
   private client!: Client;
   private messageSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  private connectionPromise: Promise<void> | null = null;
 
 
   constructor() {
+    this.client = new Client('05d268c5459c4484891ae16f981d7ecb.s2.eu.hivemq.cloud', 8884, 'clientId-jm6NtFRspJ');
+    this.connectionPromise = this.connect();
+  }
+  private async connect(): Promise<void> {
     const options = {
       useSSL: true,
       userName: 'admin',
       password: 'Thanhnhu213',
     };
-
-    this.client = new Client('05d268c5459c4484891ae16f981d7ecb.s2.eu.hivemq.cloud', 8083, 'clientId-jm6NtFRspJ');
-    this.client.connect({ ...options, onSuccess: this.onConnect.bind(this) });
-    this.client.onConnectionLost = this.onConnectionLost;
-    this.client.onMessageArrived = this.onMessageArrived;
+    return new Promise<void>((resolve, reject) => {
+      this.client.connect({
+        ...options,
+        onSuccess: () => {
+          this.onConnect();
+          resolve();
+        },
+        onFailure: (error: MQTTError) => {
+          reject(new Error(error.errorMessage));
+        }
+      });
+    });
   }
 
+  async waitUntilConnected( ): Promise<void> {
+    return this.connectionPromise ?? await Promise.resolve();
+  }
+
+
+
   onConnect() {
-    console.log('Connected');
-    this.client.subscribe('my/test/topic');
+      console.log('Connected');
+      this.client.subscribe('my/test/topic');
     // this.client.onMessageArrived = this.onMessageArrived.bind(this);
   }
 
   getMessageSubject() {
+    console.log("log : " + this.messageSubject.asObservable());
     return this.messageSubject.asObservable();
   }
 
@@ -39,7 +58,7 @@ export class MqttModuleServiceService {
     }
   }
 
-  onMessageArrived(message: Message) {
+  onMessageArrived = (message: Message) => {
     const payload = message.payloadString;
     console.log("onMessageArrived:" + message.payloadString);
     this.messageSubject.next(payload);

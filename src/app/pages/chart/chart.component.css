@@ -1,0 +1,23 @@
+#divChart {
+    display: block;
+    /* width: 200px; */
+    /* height: 200px; */
+}
+
+.chart-container {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Kích thước biểu đồ */
+.chart {
+    max-width: 90%;
+    max-height: 80%;
+    border: 1px solid black;
+    width: 100%;
+    /* Đảm bảo biểu đồ chiếm toàn bộ phần thân */
+    height: 300px;
+    /* Điều chỉnh chiều cao biểu đồ theo ý muốn */
+}
