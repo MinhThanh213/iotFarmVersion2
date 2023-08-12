@@ -1,20 +1,18 @@
 <div>
     <p>Received MQTT Messages:</p>
-    <div class="table-responsive">
-        <table class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th class="text-center">#</th>
-                    <th class="text-center">Nội Dung Message</th>
-                </tr>
-            </thead>
-            <tbody *ngFor="let item of messages">
-                <tr>
-                    <td class="text-center">#</td>
-                    <td class="text-center">{{ item }}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let message of messages; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ message }}</td>
+            </tr>
+        </tbody>
+    </table>
 
+</div>
