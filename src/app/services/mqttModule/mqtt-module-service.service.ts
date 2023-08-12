@@ -62,7 +62,7 @@ export class MqttModuleServiceService {
     const payload = message.payloadString;
     console.log("onMessageArrived:" + message.payloadString);
     this.messageSubject.next(payload);
-    console.log("new data : ");
+    // console.log("new data : " + this);
   }
 
   // Function to get the MQTT client instance
