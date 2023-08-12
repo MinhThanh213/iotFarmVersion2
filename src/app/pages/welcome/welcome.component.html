@@ -8,9 +8,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let message of messages">
-                <td>1</td>
-                <td>Mark</td>
+            <tr *ngFor="let message of messages; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ message }}</td>
             </tr>
         </tbody>
     </table>

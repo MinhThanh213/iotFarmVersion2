@@ -20,13 +20,7 @@ export class WelcomeComponent implements OnInit {
 
   initializeMQTTData() {
     this.mqttModule.getClient().onConnectionLost = this.mqttModule.onConnectionLost.bind(this);
-    this.mqttModule.getClient().connect({
-      onSuccess: this.onConnect.bind(this),
-      useSSL: true,
-      userName: 'admin',
-      password: 'Thanhnhu213',
-      // ports: '8883'
-    });
+    this.mqttModule.connect()
   }
 
   onConnect() {

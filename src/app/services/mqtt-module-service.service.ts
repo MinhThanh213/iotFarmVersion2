@@ -8,24 +8,31 @@ import { BehaviorSubject } from 'rxjs';
 export class MqttModuleServiceService {
   private client!: Client;
   private messageSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  private connected: boolean = false;
 
 
   constructor() {
-    const options = {
-      useSSL: true,
-      userName: 'admin',
-      password: 'Thanhnhu213',
-    };
-
-    this.client = new Client('05d268c5459c4484891ae16f981d7ecb.s2.eu.hivemq.cloud', 8083, 'clientId-jm6NtFRspJ');
-    this.client.connect({ ...options, onSuccess: this.onConnect.bind(this) });
+    this.client = new Client('05d268c5459c4484891ae16f981d7ecb.s2.eu.hivemq.cloud', 8884, 'clientId-jm6NtFRspJ');
+  }
+  connect() {
+    if (!this.connected) {
+      const options = {
+        useSSL: true,
+        userName: 'admin',
+        password: 'Thanhnhu213',
+      };
+      this.client.connect({...options, onSuccess: this.onConnect.bind(this)});
+    }
     this.client.onConnectionLost = this.onConnectionLost;
     this.client.onMessageArrived = this.onMessageArrived;
   }
 
+
+
   onConnect() {
-    console.log('Connected');
-    this.client.subscribe('my/test/topic');
+      console.log('Connected');
+      this.connected = true;
+      this.client.subscribe('my/test/topic');
     // this.client.onMessageArrived = this.onMessageArrived.bind(this);
   }
 
@@ -39,7 +46,7 @@ export class MqttModuleServiceService {
     }
   }
 
-  onMessageArrived(message: Message) {
+  onMessageArrived = (message: Message) => {
     const payload = message.payloadString;
     console.log("onMessageArrived:" + message.payloadString);
     this.messageSubject.next(payload);
