@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { MqttModuleServiceService } from 'src/app/services/mqtt-module-service.service';
+import { MqttModuleServiceService } from 'src/app/services/mqttModule/mqtt-module-service.service';
 
 
 @Component({
