@@ -17,7 +17,7 @@ export class MqttModuleServiceService {
       password: 'Thanhnhu213',
     };
 
-    this.client = new Client('05d268c5459c4484891ae16f981d7ecb.s2.eu.hivemq.cloud', 8083, 'clientId-jm6NtFRspJ');
+    this.client = new Client('05d268c5459c4484891ae16f981d7ecb.s2.eu.hivemq.cloud', 8884, "/mqtts" ,'clientId-jm6NtFRspJ');
     this.client.connect({ ...options, onSuccess: this.onConnect.bind(this) });
     this.client.onConnectionLost = this.onConnectionLost;
     this.client.onMessageArrived = this.onMessageArrived;
@@ -26,10 +26,11 @@ export class MqttModuleServiceService {
   onConnect() {
     console.log('Connected');
     this.client.subscribe('my/test/topic');
-    // this.client.onMessageArrived = this.onMessageArrived.bind(this);
+    this.client.onMessageArrived = this.onMessageArrived.bind(this);
   }
 
   getMessageSubject() {
+    console.log("log : " + this.messageSubject.asObservable());
     return this.messageSubject.asObservable();
   }
 
