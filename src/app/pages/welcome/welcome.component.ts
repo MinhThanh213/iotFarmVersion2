@@ -18,14 +18,13 @@ export class WelcomeComponent implements OnInit {
     this.initializeMQTTData();
   }
 
-  initializeMQTTData() {
-    this.mqttModule.getClient().onConnectionLost = this.mqttModule.onConnectionLost.bind(this);
-    this.mqttModule.connect()
-  }
-
-  onConnect() {
-    console.log('Connected');
-    this.subscribeToMqttMessages();
+  async initializeMQTTData() {
+    try{
+      await this.mqttModule.waitUntilConnected();
+      this.subscribeToMqttMessages();
+    } catch (error){
+      console.log("error", error);
+    }
   }
 
   subscribeToMqttMessages() {
