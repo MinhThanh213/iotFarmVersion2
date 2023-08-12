@@ -8,30 +8,41 @@ import { BehaviorSubject } from 'rxjs';
 export class MqttModuleServiceService {
   private client!: Client;
   private messageSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
-  private connected: boolean = false;
+  private connectionPromise: Promise<void> | null = null;
 
 
   constructor() {
     this.client = new Client('05d268c5459c4484891ae16f981d7ecb.s2.eu.hivemq.cloud', 8884, 'clientId-jm6NtFRspJ');
+    this.connectionPromise = this.connect();
   }
-  connect() {
-    if (!this.connected) {
-      const options = {
-        useSSL: true,
-        userName: 'admin',
-        password: 'Thanhnhu213',
-      };
-      this.client.connect({...options, onSuccess: this.onConnect.bind(this)});
-    }
-    this.client.onConnectionLost = this.onConnectionLost;
-    this.client.onMessageArrived = this.onMessageArrived;
+  private async connect(): Promise<void> {
+    const options = {
+      useSSL: true,
+      userName: 'admin',
+      password: 'Thanhnhu213',
+    };
+    return new Promise<void>((resolve, reject) => {
+      this.client.connect({
+        ...options,
+        onSuccess: () => {
+          this.onConnect();
+          resolve();
+        },
+        onFailure: (error: MQTTError) => {
+          reject(new Error(error.errorMessage));
+        }
+      });
+    });
+  }
+
+  async waitUntilConnected( ): Promise<void> {
+    return this.connectionPromise ?? await Promise.resolve();
   }
 
 
 
   onConnect() {
       console.log('Connected');
-      this.connected = true;
       this.client.subscribe('my/test/topic');
     // this.client.onMessageArrived = this.onMessageArrived.bind(this);
   }
