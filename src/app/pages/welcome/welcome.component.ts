@@ -13,8 +13,6 @@ export class WelcomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("hello");
-
     this.initializeMQTTData();
   }
 
