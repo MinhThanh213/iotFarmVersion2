@@ -6,16 +6,16 @@
   color: white;
   border-radius: 8px;
   border: 2px solid white;
-  height: 100%; /* Chiều cao 100% của cha */
+  height: 100%; 
 }
 
-.square1 { background-color: #ffc107; border-color: #ffa000; height: 140px; }
-.square2 { background-color: #4caf50; border-color: #388e3c; height: 140px; }
-.square3 { background-color: #2196f3; border-color: #1565c0; height: 440px; }
-.square4 { background-color: #e91e63; border-color: #c2185b; height: 140px; }
-.square5 { background-color: #9c27b0; border-color: #7b1fa2; height: 140px; }
-.square6 { background-color: #ff5722; border-color: #e64a19; height: 280px; }
-.square7 { background-color: #607d8b; border-color: #455a64; height: 140px; }
-.square8 { background-color: #795548; border-color: #5d4037; height: 140px; }
-.square9 { background-color: #3f51b5; border-color: #3949ab; height: 140px; }
-.square10 { background-color: #3f51b5; border-color: #3949ab; height: 140px; }
+.square1 { border-color: #ffa000; height: 140px; }
+.square2 { border-color: #388e3c; height: 140px; }
+.square3 { border-color: #1565c0; height: 440px; }
+.square4 { border-color: #c2185b; height: 140px; }
+.square5 { border-color: #7b1fa2; height: 140px; }
+.square6 { border-color: #e64a19; height: 280px; }
+.square7 { border-color: #455a64; height: 140px; }
+.square8 { border-color: #5d4037; height: 140px; }
+.square9 { border-color: #3949ab; height: 140px; }
+.square10 { border-color: #3949ab; height: 140px; }
