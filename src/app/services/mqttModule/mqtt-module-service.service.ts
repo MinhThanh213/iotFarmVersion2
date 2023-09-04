@@ -35,16 +35,16 @@ export class MqttModuleServiceService {
     });
   }
 
-  async waitUntilConnected( ): Promise<void> {
+  async waitUntilConnected(): Promise<void> {
     return this.connectionPromise ?? await Promise.resolve();
   }
 
 
 
   onConnect() {
-      console.log('Connected');
-      this.client.subscribe('my/test/topic');
-    // this.client.onMessageArrived = this.onMessageArrived.bind(this);
+    // console.log('Connected');
+    this.client.subscribe('sensorReadings');
+    this.client.onMessageArrived = this.onMessageArrived.bind(this);
   }
 
   getMessageSubject() {
@@ -62,7 +62,7 @@ export class MqttModuleServiceService {
     const payload = message.payloadString;
     console.log("onMessageArrived:" + message.payloadString);
     this.messageSubject.next(payload);
-    console.log("new data : ");
+    // console.log("new data : " + this);
   }
 
   // Function to get the MQTT client instance
