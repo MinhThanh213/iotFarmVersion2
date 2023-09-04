@@ -11,7 +11,10 @@ import {CommonModule} from "@angular/common";
   imports: [
     WelcomeRoutingModule,
     CommonModule],
-  declarations: [WelcomeComponent,DeviceComponent,ChartComponent,
+  declarations: [
+    WelcomeComponent,
+    DeviceComponent,
+    ChartComponent,
     ],
   exports: [WelcomeComponent]
 })
