@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MqttModuleServiceService } from 'src/app/services/mqtt-module-service.service';
+import { MqttModuleServiceService } from '../../services/mqttModule/mqtt-module-service.service';
 
 @Component({
   selector: 'app-welcome',
@@ -13,8 +13,6 @@ export class WelcomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("hello");
-
     this.initializeMQTTData();
   }
 
