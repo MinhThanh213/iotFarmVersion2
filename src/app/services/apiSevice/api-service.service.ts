@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { sensor } from 'src/app/Utils/sensor.model';
 
 
 const httpOptions = {
@@ -31,11 +32,12 @@ export class ApiServiceService {
     return this.http.get<any>(this.path + this.uriGetAllSensors, httpOptions);
   }
 
-  public updateStage(data : any){
-    return this.http.post<any>(this.path + this.uriController + this.uriControllerUpdateStage, data, httpOptions);
+  public updateStage(data : sensor,stage:number){
+    return this.http.post<sensor>(this.path + this.uriController + this.uriControllerUpdateStage + "?idDevice=" + data.idDevice +"&stage=" + stage , data, httpOptions);
   }
 
   public getAllController(){
-    return this.http.get<any>(this.path + this.uriController + this.uriControllerGetAll, httpOptions);
+    console.log(this.path + this.uriController + this.uriControllerGetAll);
+    return this.http.get<sensor[]>(this.path + this.uriController + this.uriControllerGetAll, httpOptions);
   }
 }

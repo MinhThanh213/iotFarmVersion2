@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OpenWeatherService } from 'src/app/services/openWeather/open-weather.service';
 import { interval, Subscription } from 'rxjs';
-import { SecondsToClockPipe } from '../../src/pages/until/seconds-to-clock.pipe';
+import { SecondsToClockPipe } from '../../Utils/until/seconds-to-clock.pipe';
 @Component({
   selector: 'app-device',
   templateUrl: './device.component.html',
@@ -61,14 +61,18 @@ export class DeviceComponent implements OnInit {
   resetTimer() {
     this.seconds = 0;
   }
-
+  i:number = 0;
   ngOnInit(): void {
-    this.callApi();
-    this.calculater(1000,900);
+    setInterval(() => {
+      this.callApi();
+      // console.log(this.i++);
+      
+    }, 5000);
+    this.calculater(1000,100);
   }
   callApi() {
     var a = this._weatherService.getWeatherNow().subscribe((a) => {
-      console.log(a);
+      // console.log(a);
       this.humidity = a.main.humidity;
       this.temperature = a.main.temp;
       this.tempMax = a.main.temp_max;

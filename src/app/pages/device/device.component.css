@@ -16,22 +16,27 @@
 }
 
 .square1 {
+  border-color: #7c7c7c;
   height: 140px;
 }
 
 .square2 {
+  border-color: #7c7c7c;
   height: 140px;
 }
 
 .square3 {
+  border-color: #7c7c7c;
   height: 440px;
 }
 
 .square4 {
+  border-color: #7c7c7c;
   height: 140px;
 }
 
 .square5 {
+  border-color: #7c7c7c;
   height: 140px;
 }
 
@@ -40,14 +45,18 @@
 }
 
 .square7 {
+  border-color: #7c7c7c;
   height: 140px;
 }
 
 .square8 {
+  border-color: #7c7c7c;
   height: 140px;
 }
 
 .square9 {
+  /* border-radius: 50%; */
+  border-color: #7c7c7c;
   height: 140px;
 }
 

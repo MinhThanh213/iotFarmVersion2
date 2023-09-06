@@ -1,0 +1,133 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Sharp" rel="stylesheet" />
+<div class="">
+    <div class="row">
+        <!-- <div class="col-sm-3">
+            <div class="text-center">
+                <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail"
+                    alt="avatar">
+                <hr hidden>
+                <h6 class="mt-3">Upload a different photo...</h6>
+                <input type="file" class="mt-3 text-center center-block file-upload">
+                <div class="mt-3 text-center center-block file-upload"> -->
+        <!-- <div *ngIf="user.positionId === 1">MB Bank</div> -->
+        <!-- <div *ngIf="user.positionId === 2">Vietcombank</div> -->
+        <!-- </div>
+            </div>
+            <hr hidden><br>
+        </div> -->
+        <div class="col-sm-12">
+            <!-- Tabs navs -->
+            <div *ngIf="sensor == null">
+                <p style="color: red;">Chưa có thiết bị nào được kết nối</p>
+            </div>
+            <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
+                <li class="nav-item" role="presentation" *ngFor="let temp of sensor; let i = index">
+                    <a class="nav-link" [ngClass]="{'active': currentTab === 'tab' + (i + 1)}"
+                        (click)="changeTab('tab'+ (i + 1))">Device
+                        {{i + 1}}</a>
+                </li>
+            </ul>
+            <!-- Tabs navs -->
+
+            <!-- Tabs content -->
+            <div class="tab-content" id="ex1-content" *ngFor="let temp of sensor; let i = index">
+                <div class="tab-pane fade" [ngClass]="{'show active': currentTab === 'tab' + (i + 1)}" id="ex1-tabs-1"
+                    role="tabpanel" aria-labelledby="ex1-tab-1">
+                    <div class="form">
+                        <div class="form-group">
+                            <!-- <label for="first_name" class="col-xs-6"> 
+                                <h4>Topic</h4>
+                            </label>
+                            <div class="col-xs-6"> 
+                                <input type="text" class="form-control" readonly [value]="temp.topic" id="first_name" placeholder="first name" title="enter your first name if any.">
+                            </div> -->
+                            <h4>Device {{i + 1}}</h4><a>{{temp.updatedAt}}</a>
+                            <!-- row 1 -->
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <label for="inputPassword6" class="col-form-label"
+                                        style="font-size: medium;">Topic</label>
+                                </div>
+                                <div class="col-5">
+                                    <input type="text" [value]="temp.topic" readonly class="form-control">
+                                </div>
+                                <div class="col-auto">
+                                    <label for="inputPassword6" class="col-form-label "
+                                        style="font-size: medium;">Type</label>
+                                </div>
+                                <div class="col-5">
+                                    <input type="text" [value]="temp.type" readonly class="form-control">
+                                </div>
+                            </div>
+                            <!-- row 2 -->
+                            <br/>
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <div class="square square2" style="color: black;">
+                                        <div style="width: 100%;height: 100%;">
+                                            <div class="row1 flex-container">
+                                            </div>
+                                            <div class="row2 flex-container">
+                                                <div class="row2-content">
+                                                    <h3 style="padding-top: 5%;">Temp : {{temp.temp}}</h3>
+                                                    <div class="icon"
+                                                        style="margin-left: 10px;background: #388e3c;border-radius: 50%;color:white;">
+                                                        <span style="padding-top: 15%;" class="material-symbols-sharp">
+                                                            device_thermostat </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row3 flex-container">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="square square2" style="color: black;">
+                                        <div style="width: 100%;height: 100%;">
+                                            <div class="row1 flex-container">
+                                            </div>
+                                            <div class="row2 flex-container">
+                                                <div class="row2-content">
+                                                    <h3 style="padding-top: 5%;">Humidity : {{temp.hum}}</h3>
+                                                    <div class="icon"
+                                                        style="margin-left: 10px;background: rgb(233, 245, 59);border-radius: 50%;color:white;">
+                                                        <span style="padding-top: 15%;" class="material-symbols-sharp">
+                                                            humidity_percentage </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row3 flex-container">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="square square2" style="color: black;">
+                                        <div style="width: 100%;height: 100%;">
+                                            <div class="row1 flex-container">
+                                            </div>
+                                            <div class="row2 flex-container">
+                                                <div class="row2-content">
+                                                    <h3 style="padding-top: 5%;">WaterLevel : {{temp.waterLevel}}</h3>
+                                                    <div class="icon"
+                                                        style="margin-left: 10px;background: rgb(59, 99, 245);border-radius: 50%;color:white;">
+                                                        <span style="padding-top: 15%;" class="material-symbols-sharp">
+                                                            humidity_percentage </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row3 flex-container">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Tabs content -->
+        </div>
+    </div>
+</div>

@@ -15,7 +15,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { CommonModule } from "@angular/common";
-import { SecondsToClockPipe } from './src/pages/until/seconds-to-clock.pipe';
+import { SecondsToClockPipe } from './Utils/until/seconds-to-clock.pipe';
 
 registerLocaleData(en);
 
