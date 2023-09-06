@@ -1,18 +1,107 @@
-<div>
-    <p>Received MQTT Messages:</p>
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Message</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let message of messages; let i = index">
-                <td>{{ i + 1 }}</td>
-                <td>{{ message }}</td>
-            </tr>
-        </tbody>
-    </table>
+<ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" [ngClass]="{'active': currentTab === 'tab1'}" (click)="changeTab('tab1')">Connect MQTT</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" [ngClass]="{'active': currentTab === 'tab2'}" (click)="changeTab('tab2')">Countdown
+            Timer</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" [ngClass]="{'active': currentTab === 'tab3'}" (click)="changeTab('tab3')">Account</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" [ngClass]="{'active': currentTab === 'tab4'}" (click)="changeTab('tab4')">Code</a>
+    </li>
+</ul>
+<div class="tab-content" id="ex1-content">
+    <div class="tab-pane fade" [ngClass]="{'show active': currentTab === 'tab1'}" id="ex1-tabs-1" role="tabpanel"
+        aria-labelledby="ex1-tab-1">
+        <h3>Connection</h3>
+        <div class="row">
+            <div class="col-6"></div>
+            <div class="col-6"></div>
+            <!-- <p>Received MQTT Messages:</p>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Message</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let message of messages; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ message }}</td>
+                    </tr>
+                </tbody>
+            </table> -->
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <h3>Publish</h3>
 
+            </div>
+            <div class="col-4">
+                <h3>Subscriptions</h3>
+                <div class="row">
+                    <div class="col-6"></div>
+                    <div class="col-6"></div>
+                    <!-- <p>Received MQTT Messages:</p>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Message</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let message of messages; let i = index">
+                                <td>{{ i + 1 }}</td>
+                                <td>{{ message }}</td>
+                            </tr>
+                        </tbody>
+                    </table> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" [ngClass]="{'show active': currentTab === 'tab2'}" id="ex1-tabs-2" role="tabpanel"
+        aria-labelledby="ex1-tab-2">
+        Tab 2 content
+    </div>
+    <div class="tab-pane fade" [ngClass]="{'show active': currentTab === 'tab3'}" id="ex1-tabs-3" role="tabpanel"
+        aria-labelledby="ex1-tab-3">
+        More functionality is under development !
+    </div>
+    <div class="tab-pane fade align-items-center" [ngClass]="{'show active': currentTab === 'tab4'}" id="ex1-tabs-4"
+        role="tabpanel" aria-labelledby="ex1-tab-4">
+        <div class="card">
+            <div class="card-header" style="font-size:large;">
+                Add a new code!
+            </div>
+            <div class="card-body align-items-center justify-content-center">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group" id="order">
+                            <label class="form-label" for="product">Name Code
+                                <span class="text-danger">*</span></label>
+                            <select class="form-control" id="product">
+                                <option selected value="">--- Chose A Code ---</option>
+                                <option value="startTime">Time Start When Button Turn Off</option>
+                                <option value="countdown">Countdown Timer When Button Turn On</option>
+                                <option value="mqtt">MQTT Account</option>
+                            </select> 
+                        </div>
+                        <br/>
+                        <div class="form-group">
+                            <label for="code" class="form-label">Code</label>
+                            <input (change)="checkCode()" name="code" [(ngModel)]="code" style="border: null;" type="text" id="code" class="form-control"
+                            [ngStyle]="{'border': isCodeValid == null ? 'null' : (isCodeValid ? '1px solid green' : '1px solid red')}">
+                            <span class="col-auto" style="padding: 2%;padding-top: 5%;color: red;" id="errorCheckCode"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

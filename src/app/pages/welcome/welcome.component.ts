@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MqttModuleServiceService } from '../../services/mqttModule/mqtt-module-service.service';
+import { ApiConfigService } from 'src/app/services/apiConfig/api-config.service';
 
 @Component({
   selector: 'app-welcome',
@@ -9,7 +10,31 @@ import { MqttModuleServiceService } from '../../services/mqttModule/mqtt-module-
 
 export class WelcomeComponent implements OnInit {
   messages: string[] = [];
-  constructor(private mqttModule : MqttModuleServiceService) {
+  currentTab = 'tab1'; // Khởi tạo tab đầu tiên
+  name:string = ""
+  code:string = ""
+  isCodeValid!: boolean;
+  constructor(private mqttModule : MqttModuleServiceService,private apiConfig : ApiConfigService) {
+  }
+
+  changeTab(tab: string) {
+    this.currentTab = tab;
+  }
+  
+  checkCode(){    
+    const span = document.getElementById('errorCheckCode') as HTMLDivElement;
+    this.apiConfig.checkCode(this.code).subscribe((e) => {
+      if(e.code == '200'){
+        this.isCodeValid= true;
+        span.textContent = null;
+      }else{
+        this.isCodeValid= false;
+        span.textContent = e.message;
+      }
+      
+    });
+    console.log(this.code);
+    
   }
 
   ngOnInit(): void {
