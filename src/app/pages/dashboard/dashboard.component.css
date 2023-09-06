@@ -1,0 +1,78 @@
+.square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: white;
+    border-radius: 8px;
+    border: 2px solid white;
+    height: 100%;
+}
+
+.square2 {
+    border-color: #7c7c7c;
+    height: 140px;
+}
+
+
+/* csss teampuarte */
+.flex-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.row1 {
+    height: 25%;
+    align-items: center;
+    justify-content: center;
+}
+
+.row2 {
+    height: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.aligin-item {
+    align-items: center;
+    justify-content: center;
+}
+
+.row-square-one {
+    height: 45%;
+    align-items: center;
+    justify-content: center;
+}
+
+.row-square-two {
+    height: 45%;
+    align-items: center;
+    justify-content: center;
+}
+
+.row2-content {
+    display: flex;
+}
+
+.content-center {
+    align-items: center;
+    justify-content: center;
+}
+
+.row3 {
+    align-items: center;
+    justify-content: center;
+    height: 25%;
+}
+
+.row1,
+.row2,
+.row3 {
+    width: 100%;
+    background-color: #f2f0f5;
+}
+
+
+.material-symbols-sharp {
+    font-size: 40px;
+}

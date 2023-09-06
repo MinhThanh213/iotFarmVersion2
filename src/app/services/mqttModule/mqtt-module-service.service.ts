@@ -12,14 +12,14 @@ export class MqttModuleServiceService {
 
 
   constructor() {
-    this.client = new Client('05d268c5459c4484891ae16f981d7ecb.s2.eu.hivemq.cloud', 8884, 'clientId-jm6NtFRspJ');
+    this.client = new Client('6d838a7cf44b4af7a45b78d2c55652d3.s2.eu.hivemq.cloud', 8884, 'clientId-jm6NtFRspJ');
     this.connectionPromise = this.connect();
   }
   private async connect(): Promise<void> {
     const options = {
       useSSL: true,
-      userName: 'admin',
-      password: 'Thanhnhu213',
+      userName: 'duccanh',
+      password: 'Canhb3oa1@',
     };
     return new Promise<void>((resolve, reject) => {
       this.client.connect({
